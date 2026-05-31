@@ -1,5 +1,5 @@
 #include <iostream>
-using namspace std;
+using namespace std;
 
 void input( int& hours24, int& minutes);
 void output( int hours, int minutes);
@@ -8,12 +8,12 @@ int main()
 {
     int timeHours, timeMinutes, waitHours, waitMinutes,finishHours, finishMinutes;
 
-  cout << "Compute completion time from current time and waiting period\n";
+    cout << "Compute completion time from current time and waiting period\n";
   
 
-  char ans = 'y'; 
-  while ('y' == ans || 'Y' == ans)
-  {
+    char ans = 'y'; 
+    while ('y' == ans || 'Y' == ans)
+    {
     cout << "Current time:\n";
     input(timeHours, timeMinutes);
 
@@ -39,8 +39,21 @@ int main()
 
 	cout << "\n\nEnter Y or y to continue, any other halts\n\n";
 	cin >> ans;
-  }
+    }
 
   return 0;
 }
 
+void input( int& hours24, int& minutes)
+{
+    cout << "What is the hour? (24 hour format)" << endl;
+    cin >> hours24;
+    cout << "What is the minute?" << endl;
+    cin >> minutes;
+    cout << "The time selected is: " << hours24 << ":" << minutes << endl;
+}
+
+void output( int hours, int minutes)
+{
+cout << "The amount of time you have to wait to reach the desired time is: " << hours << ":" << minutes << endl;
+}
