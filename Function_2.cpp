@@ -1,48 +1,72 @@
 #include <iostream>
 using namespace std;
-// We will use cents for all monetary values. This will let us
-// work with integer, rather than floating-point, variables.
-const int TWINKIE_PRICE = 350;
 
-// Prompt the user to insert coins until enough has been paid to buy
-// a twinkie. The total amount inserted, in cents, is returned.
-int accept_money();
-
-// Returns the amount of change that should be returned to the user.
-int compute_change(int total_paid);
+double getCoinValue();
+double getChange(double total);
 
 int main()
 {
-      // Declare variables for the amount of money that the user enters,
-    // along with the change that is to be returned to them.
-    int money_entered, change;
+    double total = 0.00;
+    double change = 0.00;
 
-    // Make sure that monetary values we output are formatted with
-    // two digits after the decimal point.
-    cout.setf(ios::fixed);
-    cout.setf(ios::showpoint);
-    cout.precision(2);
+    cout << "If you want to get a twinkie, you must pay $3.50! To pay, you must input a coin" << endl;
+    cout << "Dollar (d)" << endl;
+    cout << "Quarter (q)" << endl;
+    cout << "Dime (i)" << endl;
+    cout << "Nickel (n)" << endl;
 
-    // Collect money from the user
-    money_entered = accept_money();
+    while(total < 3.50)
+    {
+        total += getCoinValue();
+        cout << "The remaining balance is: $" << 3.50 - total << endl;
+    }
 
-    // Figure out how much change to return
-    change = compute_change(money_entered);
-
-    // Dispense the twinkie
-    cout << "\nEnjoy your deep-fried twinkie. Your change is $"
-         << change/100.0 << endl;
+    cout << "You got your twinkie!" << endl;
+    cout << "Your change is: " << getChange(total) << endl;
 
     return 0;
 }
 
-int accept_money()
+double getCoinValue()
 {
-  //write your code
+    char coin;
+    double value;
+    cout << "What coin will you put in? (d, q, i, n)" << endl;
+    cin >> coin;
+
+    switch(coin)
+    {
+        case('d'):
+        {
+            value = 1.00;
+            cout << "You have inputted a dollar!" << endl;
+            break;
+        }
+        case('q'):
+        {
+            value = 0.25;
+            cout << "You have inputted a quarter!" << endl;
+            break;
+        }
+        case('i'):
+        {
+            value = 0.10;
+            cout << "You have inputted a dime!" << endl;
+            break;
+        }
+        case('n'):
+        {
+            value = 0.05;
+            cout << "You have inputted a nickel!" << endl;
+            break;
+        }
+    }
+
+    return value;
 }
 
-int compute_change(int total_paid) 
+double getChange(double total)
 {
-//write your code
+    double change = (total - 3.5);
+    return change;
 }
-
